@@ -44,16 +44,11 @@ class primes_bitpack {
             if ( limit > limit_ )
                 throw std::out_of_range("Prime hasn't been sieved.");
             uint64_t primeEnd = (limit / 30) + 1;
-            uint64_t n;
-            uint8_t s;
 
-            vector<uint64_t> ret;
-            ret.push_back(2);
-            ret.push_back(3);
-            ret.push_back(5);
+            vector<uint64_t> ret = {2, 3, 5};
 
-            for (n = 0; n < primeEnd; n++)
-                for (s = 1; s; s += s)
+            for (size_t n = 0; n < primeEnd; n++)
+                for (uint8_t s = 1; s; s += s)
                     if (!(data_[n] & s))
                         ret.push_back(n*30 + bitToNum(s));
 
@@ -84,22 +79,14 @@ class primes_bitpack {
         inline uint64_t bitToNum(uint8_t bit) const
         {
             switch (bit) {
-                case 0x01:
-                    return 1;
-                case 0x02:
-                    return 7;
-                case 0x04:
-                    return 11;
-                case 0x08:
-                    return 13;
-                case 0x10:
-                    return 17;
-                case 0x20:
-                    return 19;
-                case 0x40:
-                    return 23;
-                case 0x80:
-                    return 29;
+                case 0x01: return  1;
+                case 0x02: return  7;
+                case 0x04: return 11;
+                case 0x08: return 13;
+                case 0x10: return 17;
+                case 0x20: return 19;
+                case 0x40: return 23;
+                case 0x80: return 29;
             }
             return 0;
         }
