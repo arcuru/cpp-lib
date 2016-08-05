@@ -132,7 +132,7 @@ public:
 
     size_type count(const value_type& val) const
     {
-        return find(val) != data_c.end();
+        return find(val) != data_.cend();
     }
 
     iterator lower_bound(const value_type& val)
