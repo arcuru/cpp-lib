@@ -2,7 +2,6 @@
 cmake_minimum_required(VERSION 2.8.11)
 
 foreach(proj
-        primes
         flat_set
     )
 
@@ -45,7 +44,7 @@ foreach(proj
 
         # We need boost includes
         target_include_directories(${proj}_test PRIVATE ${Boost_INCLUDE_DIRS} ..)
-        
+
         # We need boost libraries
         target_link_libraries(${proj}_test ${Boost_LIBRARIES})
 
@@ -69,4 +68,3 @@ foreach(proj
     endif()
 
 endforeach(proj)
-
