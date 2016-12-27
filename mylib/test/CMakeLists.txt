@@ -5,6 +5,7 @@ foreach(proj
         flat_set
         union_find
         adjacency_list
+        trie
     )
 
     # Name the project
