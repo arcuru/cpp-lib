@@ -4,6 +4,7 @@ cmake_minimum_required(VERSION 2.8.11)
 foreach(proj
         flat_set
         union_find
+        adjacency_list
     )
 
     # Name the project
