@@ -45,7 +45,7 @@ public:
   value_type &get(const key_type &key) {
     auto it = hmap.find(key);
     if (it == hmap.end()) {
-      insert(key); // TODO: this is inefficient
+      insert(key); // TODO: this is inefficient, and maybe not what you wnat
       it = hmap.find(key);
     }
     touch(it->second);
@@ -65,5 +65,22 @@ public:
     head = it;
     if (tail == nullptr)
       tail = it;
+  }
+
+  void pop_back() {
+    if (tail == nullptr)
+      return;
+    hmap.erase(hmap.find(tail->key));
+    if (head == tail) {
+        head = nullptr;
+        delete tail;
+        tail = nullptr;
+        return;
+    }
+    auto new_tail = tail->prev;
+    if (tail->prev != nullptr)
+        tail->prev->next = nullptr;
+    delete tail;
+    tail = new_tail;
   }
 };
