@@ -6,6 +6,7 @@ foreach(proj
         union_find
         adjacency_list
         trie
+        heap_sort
     )
 
     # Name the project
