@@ -26,7 +26,7 @@ struct weighted {
 struct unweighted {
   size_t d;
 
-  unweighted(size_t dest, int weight) : d(dest) {}
+  unweighted(size_t dest, int) : d(dest) {}
   int get_weight() const { return 1; }
   size_t get_dest() const { return d; }
 };
