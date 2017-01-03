@@ -11,10 +11,16 @@ project(cpp-lib CXX)
 
 # Enable compiler specific flags
 if("${CMAKE_CXX_COMPILER_ID}" MATCHES "(Clang|GNU|GCC)")
-    add_definitions("-std=c++1z -Wall -Wextra -Wpedantic -Werror")
+    add_definitions("-std=c++1z -Werror")
 endif()
 if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
-    add_definitions("-fcolor-diagnostics")
+    add_definitions("-Weverything -fcolor-diagnostics")
+    # Removing Boost unit test warnings
+    add_definitions("-Wno-c++98-compat -Wno-c++98-compat-pedantic -Wno-global-constructors -Wno-disabled-macro-expansion")
+    # Removing warnings I don't want
+    add_definitions("-Wno-padded")
+elseif("${CMAKE_CXX_COMPILER_ID}" MATCHES "(GNU|GCC)")
+    add_definitions("-Wall -Wextra -Wpedantic -Wshadow")
 endif()
 
 # Add boost libraries
