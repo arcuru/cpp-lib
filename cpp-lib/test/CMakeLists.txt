@@ -32,6 +32,7 @@ find_package(Boost 1.55 REQUIRED COMPONENTS unit_test_framework)
 foreach(proj
         adjacency_list
         flat_set
+        heap
         lru_cache
         trie
         union_find
